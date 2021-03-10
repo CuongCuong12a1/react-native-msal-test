@@ -1,0 +1,130 @@
+{
+  "name": "react-native-msal",
+  "version": "1.0.3",
+  "description": "React Native wrapper for iOS and Android",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/src/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index",
+  "files": [
+    "src",
+    "lib",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "android",
+    "ios",
+    "reactnativemsal.podspec",
+    "!lib/typescript/example"
+  ],
+  "scripts": {
+    "test": "jest",
+    "typescript": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "bob build",
+    "example": "yarn --cwd example",
+    "pods": "cd example && npx pod-install",
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "predeploy": "yarn example build:web",
+    "deploy": "gh-pages -d example/web-build"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/stashenergy/react-native-msal",
+  "author": "Stash Energy <dev@stash.energy> (https://stash.energy)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stashenergy/react-native-msal/issues"
+  },
+  "homepage": "https://github.com/stashenergy/react-native-msal#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.0",
+    "@commitlint/config-conventional": "^12.0.0",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.13",
+    "@types/react": "^17.0.2",
+    "@types/react-native": "^0.63.50",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "gh-pages": "^3.1.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "metro-react-native-babel-preset": "^0.65.1",
+    "prettier": "^2.1.1",
+    "react": "16.13.1",
+    "react-native": "~0.63.2",
+    "react-native-builder-bob": "^0.17.1",
+    "semantic-release": "^17.4.0",
+    "typescript": "^4.2.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint && yarn typescript"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false,
+          "printWidth": 120
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/",
+    "example/web-build"
+  ],
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false,
+    "printWidth": 120
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^2.1.0",
+    "axios": "^0.21.1"
+  }
+}

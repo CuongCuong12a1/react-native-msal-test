@@ -1,0 +1,1 @@
+{"version":3,"sources":["nativeModule.ts"],"names":["RNMSAL","NativeModules"],"mappings":";;;;;;;AAAA;;AAGA,MAAMA,MAA0B,GAAGC,2BAAcD,MAAjD;eAEeA,M","sourcesContent":["import { NativeModules } from 'react-native';\nimport type { RNMSALNativeModule } from './privateTypes';\n\nconst RNMSAL: RNMSALNativeModule = NativeModules.RNMSAL;\n\nexport default RNMSAL;\n"]}
